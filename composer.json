@@ -1,0 +1,24 @@
+{
+    "name": "attitude/render-tag-php",
+    "description": "Render (HTML) tags with proper indenting. It resembles React.createElement( component, props, ...children) API except the children argument.",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Martin Adamko",
+            "email": "martinadamko.sk@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/attitude/php"
+        }
+    ],
+    "autoload": {
+        "files": ["src/index.php"]
+    },
+    "require": {
+        "attitude/php": "dev-main"
+    }
+}
