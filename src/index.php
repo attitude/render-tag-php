@@ -74,7 +74,7 @@ function mergeProps(array $oldProps, array $newProps) {
 function renderTag(string $tag = '', array $props = []) {
   mustBeString($tag, 'Tag name');
 
-  $children = $props['children'] && !empty(empty($children)) ? $props['children'] : '';
+  $children = isset($props['children']) && !empty($props['children']) ? $props['children'] : '';
   $attributes = tagProps($props);
 
   if (!empty($attributes)) {

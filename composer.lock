@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/attitude/php.git",
-                "reference": "06b8d5c2f6201cf8112a995dd1e6312a58021490"
+                "reference": "362027fb3f0c9697b8897b93cb51a3ac6d85d71a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/attitude/php/zipball/06b8d5c2f6201cf8112a995dd1e6312a58021490",
-                "reference": "06b8d5c2f6201cf8112a995dd1e6312a58021490",
+                "url": "https://api.github.com/repos/attitude/php/zipball/362027fb3f0c9697b8897b93cb51a3ac6d85d71a",
+                "reference": "362027fb3f0c9697b8897b93cb51a3ac6d85d71a",
                 "shasum": ""
             },
             "require-dev": {
@@ -43,7 +43,7 @@
                 "source": "https://github.com/attitude/php/tree/main",
                 "issues": "https://github.com/attitude/php/issues"
             },
-            "time": "2020-10-08T20:12:13+00:00"
+            "time": "2020-10-08T21:21:25+00:00"
         }
     ],
     "packages-dev": [],
