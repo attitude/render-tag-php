@@ -21,7 +21,7 @@ function defaultValue ($value, $default) {
   return $value ? $value : $default;
 }
 
-function valueWhen() {
+function valueWhen($valueWhenTrue, $valueWhenFalseOrCondition, $conditionWhen3Values = null) {
   $arguments = func_get_args();
   $argumentsCount = count($arguments);
 
@@ -74,7 +74,7 @@ function mergeProps(array $oldProps, array $newProps) {
 function renderTag(string $tag = '', array $props = []) {
   mustBeString($tag, 'Tag name');
 
-  $children = isset($props['children']) && !empty($props['children']) ? $props['children'] : '';
+  $children = isset($props['children']) && !(empty($props['children']) && !is_numeric($props['children'])) ? $props['children'] : '';
   $attributes = tagProps($props);
 
   if (!empty($attributes)) {
@@ -95,7 +95,7 @@ function renderTag(string $tag = '', array $props = []) {
     }
   }
 
-  if (is_string($children)) {
+  if (is_string($children) || is_numeric($children)) {
     if (!strstr($children, "\n") || ($children[0] !== '<' && $children[0] !== ' ')) {
       return "<${tag}${attributes}>".$children."</${tag}>";
     }
