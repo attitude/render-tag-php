@@ -33,6 +33,14 @@ function valueWhen($valueWhenTrue, $valueWhenFalseOrCondition, $conditionWhen3Va
   $false = $argumentsCount === 2 ? null : $arguments[1];
   $condition = $argumentsCount === 2 ? $arguments[1] : $arguments[2];
 
+  if (is_callable($condition)) {
+    try {
+      return $condition() ? $true : $false;
+    } catch (\TypeError $th) {
+      return false;
+    }
+  }
+
   return $condition ? $true : $false;
 }
 
