@@ -21,6 +21,10 @@ function defaultValue ($value, $default) {
   return $value ? $value : $default;
 }
 
+function invokeReturn($value = null) {
+  return is_callable($value) ? $value () : $value;
+}
+
 function valueWhen($valueWhenTrue, $valueWhenFalseOrCondition, $conditionWhen3Values = null) {
   $arguments = func_get_args();
   $argumentsCount = count($arguments);
@@ -35,13 +39,13 @@ function valueWhen($valueWhenTrue, $valueWhenFalseOrCondition, $conditionWhen3Va
 
   if (is_callable($condition)) {
     try {
-      return $condition() ? $true : $false;
+      return $condition() ? invokeReturn($true) : invokeReturn($false);
     } catch (\TypeError $th) {
-      return false;
+      return invokeReturn($false);
     }
   }
 
-  return $condition ? $true : $false;
+  return $condition ? invokeReturn($true) : invokeReturn($false);
 }
 
 
