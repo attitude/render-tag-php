@@ -62,8 +62,8 @@ function tagProp($propName = '', $propValues = []) {
     return;
   }
 
-  $propName = preg_replace_callback('/[A-Z]/', function(array $matches) {
-    return strtolower("-{$matches[0]}");
+  $propName = preg_replace_callback('/[A-Z]+/', function(array $matches) {
+    return (strlen($matches[0]) > 1 ? '-' : '').strtolower(substr($matches[0], 0, -1).'-'.substr($matches[0], -1));
   }, $propName);
 
   return "${propName}=\"".implode(" ", $propValues)."\"";
