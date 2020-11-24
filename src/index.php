@@ -50,6 +50,14 @@ function valueWhen($valueWhenTrue, $valueWhenFalseOrCondition, $conditionWhen3Va
 
 
 function tagProp($propName = '', $propValues = []) {
+  if ($propValues === true) {
+    return $propName;
+  }
+
+  if ($propValues === false || $propValues === null) {
+    return;
+  }
+
   if (!is_array($propValues)) {
     $propValues = [$propValues];
   }
