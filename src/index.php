@@ -48,6 +48,20 @@ function valueWhen($valueWhenTrue, $valueWhenFalseOrCondition, $conditionWhen3Va
   return $condition ? invokeReturn($true) : invokeReturn($false);
 }
 
+/**
+ * Empty prop value
+ *
+ * `new EMptyPropValue` allows to explicitly pass empty string as prop value for some special cases,
+ *  e.g. [Decorative Images](https://www.w3.org/WAI/tutorials/images/decorative/)
+ *  where empty `alt` should be provided for images that are purely decorative.
+ *
+ *  Example:
+ *
+ *  ```php
+ *  renderTag('img', ['alt' => new EmptyPropValue]);
+ *  ```
+ */
+class EmptyPropValue { public function __toString() { return ''; } }
 
 function tagProp($propName = '', $propValues = []) {
   if ($propValues === true) {
@@ -63,7 +77,11 @@ function tagProp($propName = '', $propValues = []) {
   }
 
   $propValues = array_filter(array_flatten($propValues), function($value) {
-    return (is_string($value) && !empty($value)) || is_numeric($value);
+    return (
+      is_string($value) && !empty($value)) ||
+      $value instanceof EmptyPropValue ||
+      is_numeric($value)
+    ;
   });
 
   if (empty($propValues)) {
